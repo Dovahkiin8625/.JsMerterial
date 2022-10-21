@@ -1,0 +1,149 @@
+
+
+<div class="alarm-msg-pannel">
+    <div style="display:inline-block">
+      <div id="alarm-spinner" class="spinner-normal">
+          <div class="spinner-item"></div>
+          <div class="spinner-item"></div>
+          <div class="spinner-item"></div>
+          <div class="spinner-item"></div>
+          <div class="spinner-item"></div>
+      </div>
+  </div >
+    <div class="alarm-msg-text" style="margin-left:10px">
+      <span class="scorall">
+            暂无重大事故报警
+  
+      </span>
+    </div>
+    
+  </div>
+  <style>
+   
+  </style>
+  <style>
+   .alarm-msg-pannel{
+      width: 100%;
+      height: 100%;
+      background: #33395685;
+      display: flex;
+      color: #ede6e6;
+      font-size: 14px;
+      padding: 8px 8px 8px 12px;
+      border-radius: 5px;
+      box-shadow: inset 3px 3px 3px #000000a8;
+  
+    }
+  :root {
+    --size: 28px;
+    --clr-bg: #5fe8b8;
+    --clr1: #61e8ab;
+    --clr2: #7ddfe8;
+    --clr3: #48d3e8;
+    --clr4: #00e887;
+    --clr5: #1ce852;
+    --clr6: #e83600;
+    --clr7: #e85a5d;
+  }
+  .spinner-normal {
+    --animation-duration: 1000ms;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .spinner-normal .spinner-item {
+    width: calc(var(--size) / 12);
+    height: 80%;
+    background: var(--clr-spinner);
+    animation: spinner1 var(--animation-duration) ease-in-out infinite;
+  }
+  @keyframes spinner1 {
+    50% {
+      transform: scaleY(0.25);
+    }
+  }
+  .spinner-normal .spinner-item:nth-child(1) {
+    --clr-spinner: var(--clr1);
+    animation-delay: calc(var(--animation-duration) / 10 * -3);
+  }
+  .spinner-normal .spinner-item:nth-child(2) {
+    --clr-spinner: var(--clr5);
+    animation-delay: calc(var(--animation-duration) / 10 * -1);
+  }
+  .spinner-normal .spinner-item:nth-child(3) {
+    --clr-spinner: var(--clr3);
+    animation-delay: calc(var(--animation-duration) / 10 * -2);
+  }
+  .spinner-normal .spinner-item:nth-child(4) {
+    --clr-spinner: var(--clr4);
+    animation-delay: calc(var(--animation-duration) / 10 * -1);
+  }
+  .spinner-normal .spinner-item:nth-child(5) {
+    --clr-spinner: var(--clr2);
+    animation-delay: calc(var(--animation-duration) / 10 * -3);
+  }
+  
+  
+  
+  .spinner-error {
+    --animation-duration: 3000ms;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+  }
+  .spinner-error .spinner-item {
+    position: absolute;
+    top: calc(50% - var(--size) / 2);
+    left: calc(50% - var(--size) / 2);
+    width: var(--size);
+    height: var(--size);
+    background: var(--clr-spinner);
+    border-radius: 50%;
+    animation: spinner6 var(--animation-duration) ease-in-out infinite;
+  }
+  @keyframes spinner6 {
+    0%,
+              100% {
+      transform: scale(0.25);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+  .spinner-error .spinner-item:nth-of-type(1) {
+    --clr-spinner: var(--clr6);
+  }
+  .spinner-error .spinner-item:nth-of-type(2) {
+    --clr-spinner: var(--clr7);
+    animation-delay: calc(var(--animation-duration) / -2);
+  }
+  .alarm-msg-text{
+          overflow: hidden;
+          flex: 1;
+          height: 24px;
+          line-height: 24px;
+          position: relative;
+         width: 200px
+  }
+  .scorall{
+  /*   	margin-top: 3px; */
+          position: absolute;
+          white-space: nowrap;
+          padding-left: 100%;
+          animation: notice 3s 0s linear infinite both;
+          font-size: 14px;
+          font-family: PingFang SC;
+          font-weight: 500;
+          color: #eee;
+  }
+        @keyframes notice {
+          100% {
+            transform: translate3d(-100%, 0, 0);
+          }
+        }
+  
+  </style>
