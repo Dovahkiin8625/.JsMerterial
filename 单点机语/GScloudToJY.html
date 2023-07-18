@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+   
+        <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <script src="./jquery.md5.js"></script>
+		<title>Document</title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<script>
+			// 获取url后面的数值
+            function getUrlParam(name){
+             var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r!=null) return unescape(r[2]); return null; //返回参数值
+    } 
+			
+    function doSubmit() {      
+        var username = 'liufeng'; //获取输入的用户名
+       
+        var callUrl=getUrlParam("callUrl")!=null ?getUrlParam("callUrl"):"/dashboard";
+   
+        var timestamp=new Date().getTime();
+        let clientId="gscloud";
+        let clientSecret="NRKcWHK2";
+        let sign=$.md5(clientId+clientSecret+timestamp+username);
+        var url="http://172.31.54.62:30001/#/sso?username="+username+"&timestamp="+timestamp+"&clientId="+clientId+"&sign="+sign+"&callUrl="+callUrl;
+        var scr = document.createElement("iframe");      //创建iframe  
+        console.log(url);
+        scr.src = url;
+        if (scr.attachEvent)
+      {       //判断是否为ie浏览器  
+               scr.attachEvent("onload", function(){                    //如果为ie浏览器则页面加载完成后立即执行  
+                   window.location=url; //直接跳转到数据决策系统
+               });  
+            } else {  
+               scr.onload = function(){              //其他浏览器则重新加载onload事件  
+                   /*跳转到指定登录成功页面,index.jsp  
+                    var f = document.getElementById("login");  
+                    f.submit();  */
+                window.location=url; //直接跳转到数据决策系统
+            };  
+         }  
+         document.getElementsByTagName("head")[0].appendChild(scr);   //将iframe标签嵌入到head中    
+		
+    }
+    doSubmit();
+		</script>
+	</body>
+</html>
